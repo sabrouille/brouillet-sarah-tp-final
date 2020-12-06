@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function (){
     }
     else{
         connexion.requeteDernierFilm();
+        connexion.requeteFilmsPopulaires();
     }
 
 });
@@ -43,8 +44,12 @@ class MovieDB{
 
         //requeteXhr.open("GET", "https://api.themoviedb.org/3/movie/now_playing?api_key=195be83ab1367b9fb7eed4908ea17b46&language=fr-CA&page=1");
 
+        //https://api.themoviedb.org/3/movie/top_rated?api_key=195be83ab1367b9fb7eed4908ea17b46&language=fr-CA&page=1
+
         //Initialiser la requête pour récupérer les films
-        requeteXhr.open("GET", this.baseURL + "/movie/now_playing?api_key=" + this.APIKey + "&language=" + this.lang + "&page=1");
+        //requeteXhr.open("GET", this.baseURL + "/movie/now_playing?api_key=" + this.APIKey + "&language=" + this.lang + "&page=1");
+        requeteXhr.open("GET", this.baseURL + "/movie/top_rated?api_key=" + this.APIKey + "&language=" + this.lang + "&page=1");
+
 
         //Envoyer la requête
         requeteXhr.send();
@@ -72,6 +77,8 @@ class MovieDB{
 
             unArticle.querySelector("h2").innerHTML = data[i].title;
             unArticle.querySelector("p.description").innerHTML = data[i].overview || "Description non disponible";
+            unArticle.querySelector("p.cote").innerHTML = data[i].vote_average;
+            unArticle.querySelector("p.annee").innerHTML = data[i].release_date;
 
             let src = this.imgPath + "w185" + data[i].poster_path;
 
@@ -87,8 +94,48 @@ class MovieDB{
         }
     }
 
+    requeteFilmsPopulaires(){
+        let requeteXhr = new XMLHttpRequest();
 
-    requeteInfoFilm(movieId){
+        requeteXhr.addEventListener("loadend", this.retourRequeteFilmsPopulaires.bind(this));
+        requeteXhr.open("GET", this.baseURL + "/movie/popular?api_key=" + this.APIKey + "&language=" + this.lang + "&page=1");
+        requeteXhr.send();
+    }
+
+    retourRequeteFilmsPopulaires(e){
+        let target = e.currentTarget;
+
+        let data;
+
+        data = JSON.parse(target.responseText).results;
+
+        console.log(data);
+
+        this.afficheFilmsPopulaires(data);
+    }
+
+    afficheFilmsPopulaires(data){
+        for (let i = 0; i < 3; i++) {
+            let unArticle = document.querySelector(".template>.populaire").cloneNode(true);
+
+            console.log(unArticle.querySelector("h2"));
+            unArticle.querySelector("h2").innerHTML = data[i].title;
+            unArticle.querySelector("p.cote").innerHTML = data[i].vote_average;
+
+            let src = this.imgPath + "w185" + data[i].poster_path;
+
+            console.log(src);
+
+            let uneImage = unArticle.querySelector("img");
+            uneImage.setAttribute("src", src);
+            uneImage.setAttribute("alt", data[i].title);
+
+            document.querySelector(".liste-films").appendChild(unArticle);
+        }
+    }
+
+
+    /*requeteInfoFilm(movieId){
         //Mettre une page web à jour sans perturber les actions de l'utilisateur
         let requeteXhr = new XMLHttpRequest();
 
@@ -130,14 +177,14 @@ class MovieDB{
 
         console.log(src);
 
-        this.requeteActeur(data.id);
+        //this.requeteActeur(data.id);
 
-        /*uneImage.setAttribute("src", src);
+        /!*uneImage.setAttribute("src", src);
         uneImage.setAttribute("alt", data[i].title);
 
         document.querySelector(".liste-films").appendChild(unArticle);
 
-        unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);*/
+        unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);*!/
 
     }
 
@@ -157,6 +204,6 @@ class MovieDB{
     }
 
     afficheActeur(data){
-        let unActeur = document.querySelector(".template>article.acteur").cloneNode(true);
-    }
+        //let unActeur = document.querySelector(".template>article.acteur").cloneNode(true);
+    }*/
 }
