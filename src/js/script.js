@@ -1,23 +1,36 @@
-document.addEventListener("DOMContentLoaded", function (){
+document.addEventListener("DOMContentLoaded", function () {
 
     let connexion = new MovieDB();
 
     //console.log(document.location.pathname.search("fiche-film.html"));
-    if(document.location.pathname.search("fiche-film.html") > 0){
+    if (document.location.pathname.search("fiche-film.html") > 0) {
         let params = (new URL(document.location)).searchParams;
 
         //console.log(params);
 
         connexion.requeteInfoFilm(params.get("id"));
-    }
-    else{
+    } else {
         connexion.requeteDernierFilm();
         connexion.requeteFilmsPopulaires();
+
+        var mySwiper = new Swiper('.carrousel', {
+            direction: 'horizontal',
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
     }
 
 });
 
-class MovieDB{
+
+
+class MovieDB {
     constructor() {
         //console.log("Constructeur");
 
@@ -29,14 +42,14 @@ class MovieDB{
 
         this.imgPath = "https://image.tmdb.org/t/p/";
 
-        this.totalFilms = 8;
+        this.totalFilms = 6;
 
         //this.largeurAffiche = ["w90", "w154", "w185", "w342", "w500", "w780"];
         //this.largeurTeteAffiche = ["w45", "w185"];
         //this.largeurToileFond = ["w300", "w780", "w1280"];
     }
 
-    requeteDernierFilm(){
+    requeteDernierFilm() {
         //Mettre une page web à jour sans perturber les actions de l'utilisateur
         let requeteXhr = new XMLHttpRequest();
 
@@ -55,7 +68,7 @@ class MovieDB{
         requeteXhr.send();
     }
 
-    retourRequeteDernierFilm(e){
+    retourRequeteDernierFilm(e) {
         //console.log("Retour dernier film");
 
         let target = e.currentTarget;
@@ -69,7 +82,7 @@ class MovieDB{
         this.afficheDernierFilm(data);
     }
 
-    afficheDernierFilm(data){
+    afficheDernierFilm(data) {
         for (let i = 0; i < this.totalFilms; i++) {
             //console.log(data[i].title);
 
@@ -88,13 +101,14 @@ class MovieDB{
             uneImage.setAttribute("src", src);
             uneImage.setAttribute("alt", data[i].title);
 
-            document.querySelector(".liste-films").appendChild(unArticle);
+            document.querySelector(".liste-films-notes").appendChild(unArticle);
 
             unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);
         }
     }
 
-    requeteFilmsPopulaires(){
+
+    requeteFilmsPopulaires() {
         let requeteXhr = new XMLHttpRequest();
 
         requeteXhr.addEventListener("loadend", this.retourRequeteFilmsPopulaires.bind(this));
@@ -102,40 +116,42 @@ class MovieDB{
         requeteXhr.send();
     }
 
-    retourRequeteFilmsPopulaires(e){
+    retourRequeteFilmsPopulaires(e) {
         let target = e.currentTarget;
 
         let data;
 
         data = JSON.parse(target.responseText).results;
 
-        console.log(data);
+        //console.log(data);
 
         this.afficheFilmsPopulaires(data);
     }
 
-    afficheFilmsPopulaires(data){
-        for (let i = 0; i < 3; i++) {
+    afficheFilmsPopulaires(data) {
+        for (let i = 0; i < 9; i++) {
             let unArticle = document.querySelector(".template>.populaire").cloneNode(true);
 
-            console.log(unArticle.querySelector("h2"));
+            //console.log(unArticle.querySelector("h2"));
             unArticle.querySelector("h2").innerHTML = data[i].title;
             unArticle.querySelector("p.cote").innerHTML = data[i].vote_average;
 
             let src = this.imgPath + "w185" + data[i].poster_path;
 
-            console.log(src);
+            //console.log(src);
 
             let uneImage = unArticle.querySelector("img");
             uneImage.setAttribute("src", src);
             uneImage.setAttribute("alt", data[i].title);
 
-            document.querySelector(".liste-films").appendChild(unArticle);
+            document.querySelector(".swiper-wrapper").appendChild(unArticle);
+
+            unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);
         }
     }
 
 
-    /*requeteInfoFilm(movieId){
+    requeteInfoFilm(movieId) {
         //Mettre une page web à jour sans perturber les actions de l'utilisateur
         let requeteXhr = new XMLHttpRequest();
 
@@ -150,7 +166,7 @@ class MovieDB{
         requeteXhr.send();
     }
 
-    retourRequeteInfoFilm(e){
+    retourRequeteInfoFilm(e) {
         let target = e.currentTarget;
 
         //console.log(target.responseText);
@@ -164,8 +180,7 @@ class MovieDB{
         this.afficheInfoFilm(data);
     }
 
-    afficheInfoFilm(data){
-
+    afficheInfoFilm(data) {
         console.log(data.title);
 
         document.querySelector("h1").innerHTML = data.title;
@@ -177,18 +192,19 @@ class MovieDB{
 
         console.log(src);
 
-        //this.requeteActeur(data.id);
+        this.requeteActeur(data.id);
 
-        /!*uneImage.setAttribute("src", src);
-        uneImage.setAttribute("alt", data[i].title);
+        /*uneImage.setAttribute("src", src);
+        uneImage.setAttribute("alt", data.title);
 
         document.querySelector(".liste-films").appendChild(unArticle);
 
-        unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);*!/
+        unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);*/
 
     }
 
-    requeteActeur(movieId){
+
+    requeteActeur(movieId) {
         let requeteXhr = new XMLHttpRequest();
 
         requeteXhr.addEventListener("loadend", this.retourRequeteActeur.bind(this));
@@ -199,11 +215,11 @@ class MovieDB{
         requeteXhr.send();
     }
 
-    retourRequeteActeur(e){
+    retourRequeteActeur(e) {
         console.log("Retour acteurs");
     }
 
-    afficheActeur(data){
+    afficheActeur(data) {
         //let unActeur = document.querySelector(".template>article.acteur").cloneNode(true);
-    }*/
+    }
 }

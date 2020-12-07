@@ -2,23 +2,26 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>TIMflix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIMflix</title>
 
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/script.js" defer></script>
 
-
+<!--    <link rel="stylesheet" href="scss/components/_carrousel.scss">  -->
 </head>
 <body>
 
 <div class="template">
 
-    <div class="populaire">
-        <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
+    <div class="populaire swiper-slide">
+        <img src="images/image-temp.jpg"  alt="Texte de l'image (à modifier)">
         <h2>Titre du film (à modifier)</h2>
         <p class="cote">Cote du film</p>
+        <a href="">En savoir plus</a>
     </div>
 
     <article class="film">
@@ -32,75 +35,46 @@
 
 </div>
 
-
 <div class="wrapper">
+    <header>
+        <a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" alt="Logo TMDB"></a>
 
-    <div class="carrousel">
+        <nav>
+            <ul>
+                <li><a href="#">Lien 1</a></li>
+                <li><a href="#">Lien 2</a></li>
+                <li><a href="#">Lien 3</a></li>
+            </ul>
 
-        <div>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <h2>Titre du film (à modifier)</h2>
+        </nav>
+    </header>
+
+    <div class="swiper-container carrousel">
+        <h1>Les plus populaires</h1>
+        <div class="swiper-wrapper">
+            <!--<div class="populaire swiper-slide">
+                <img src="images/image-temp.jpg"  alt="Texte de l'image (à modifier)">
+                <h2>Titre du film (à modifier)</h2>
+                <p class="cote">Cote du film</p>
+            </div>-->
         </div>
-
-        <div>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <h2>Titre du film (à modifier)</h2>
-        </div>
-
-        <div>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <h2>Titre du film (à modifier)</h2>
-        </div>
-
+        <!-- Boutons de navigation -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
     </div>
 
     <hr>
 
     <section class="liste-films">
+        <h1>Les mieux notés</h1>
 
-<!--        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>
-        <article class="film">
+        <div class="liste-films-notes">
+
+        </div>
+
+            <!-- <article class="film">
             <h2>Titre du film (à modifier)</h2>
             <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
             <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
@@ -108,6 +82,18 @@
         </article>-->
 
     </section>
+
+    <footer>
+        <p>Site réalisé par Sarah Brouillet</p>
+        <a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" alt="Logo TMDB"></a>
+
+        <div class="medias-sociaux">
+            <a href="#"><img src="images/Facebook.svg" alt="Facebook"></a>
+            <a href="#"><img src="images/Twitter.svg" alt="Twitter"></a>
+            <a href="#"><img src="images/Instagram.svg" alt="Instagram"></a>
+        </div>
+
+    </footer>
 
 </div>
 

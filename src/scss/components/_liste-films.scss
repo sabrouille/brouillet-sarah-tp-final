@@ -1,21 +1,27 @@
 .liste-films{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  .liste-films-notes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  article {
-    flex-basis: 24%;
-    padding: 20px;
+    article {
+      flex-basis: 33%;
+      padding: 20px;
 
-    border: 1px black solid;
+      border: 1px black solid;
 
-    margin-bottom: 20px;
-
+      margin-bottom: 20px;
+    }
   }
-
 }
+
+
 
 
 
