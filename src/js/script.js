@@ -12,22 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         connexion.requeteDernierFilm();
         connexion.requeteFilmsPopulaires();
-
-        var mySwiper = new Swiper('.carrousel', {
-            direction: 'horizontal',
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-            },
-        });
     }
-
 });
-
 
 
 class MovieDB {
@@ -88,7 +74,7 @@ class MovieDB {
 
             let unArticle = document.querySelector(".template>article.film").cloneNode(true);
 
-            unArticle.querySelector("h2").innerHTML = data[i].title;
+            unArticle.querySelector("h3").innerHTML = data[i].title;
             unArticle.querySelector("p.description").innerHTML = data[i].overview || "Description non disponible";
             unArticle.querySelector("p.cote").innerHTML = data[i].vote_average;
             unArticle.querySelector("p.annee").innerHTML = data[i].release_date;
@@ -105,6 +91,18 @@ class MovieDB {
 
             unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);
         }
+
+        var mySwiper = new Swiper('.carrousel', {
+            direction: 'horizontal',
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
     }
 
 
@@ -133,7 +131,7 @@ class MovieDB {
             let unArticle = document.querySelector(".template>.populaire").cloneNode(true);
 
             //console.log(unArticle.querySelector("h2"));
-            unArticle.querySelector("h2").innerHTML = data[i].title;
+            unArticle.querySelector("h3").innerHTML = data[i].title;
             unArticle.querySelector("p.cote").innerHTML = data[i].vote_average;
 
             let src = this.imgPath + "w185" + data[i].poster_path;

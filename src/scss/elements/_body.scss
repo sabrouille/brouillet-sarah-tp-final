@@ -2,9 +2,15 @@
 
 body{
   font-family: var(--ff-normal);
-  font-size: var(--fz-normal);
+  font-size: var(--fz-small);
   color: var(--color-text-primary);
   line-height: var(--lh-normal);
 
   background: var(--color-bg-primary);
+}
+
+@media screen and(min-width: $vw-medium){
+  body{
+    font-size: var(--fz-normal);
+  }
 }

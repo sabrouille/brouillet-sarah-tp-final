@@ -1,15 +1,21 @@
 //FICHIER DE CONFIGURATION POUR LES ÉLÉMENTS TITRE DE LA PAGE
 
 
-h1, h2, h3, h4, h5, h6{
+h1, h3{
   font-family: var(--ff-title-primary);
   line-height: var(--lh-thin);
-  font-weight: var(--fw-bold);
+}
+
+h2, h4{
+  font-family: var(--ff-title-secondary);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-medium);
 }
 
 h1{
   font-size: var(--fz-h1);
   text-transform: uppercase;
+  font-weight: var(--fw-bold);
 }
 
 h2{
@@ -19,16 +25,10 @@ h2{
 
 h3{
   font-size: var(--fz-h3);
+  font-weight: var(--fw-regular);
 }
 
 h4{
   font-size: var(--fz-h4);
-}
-
-h5{
-  font-size: var(--fz-h5);
-}
-
-h6{
-  font-size: var(--fz-h6);
+  font-style: italic;
 }

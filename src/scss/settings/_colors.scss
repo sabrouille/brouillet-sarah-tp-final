@@ -1,8 +1,7 @@
 //FICHIER DE CONFIGURATION POUR LES VARIABLES DE COULEUR
 
 :root{
-  // Couleur de base
-  // Couleur de base
+  // Couleurs de base
   --color-white: #fff;
   --color-100:   #f8f9fa;
   --color-200:   #e9ecef;
@@ -19,20 +18,20 @@
 
   // Couleurs du projet
 
-  --color-text-primary:   #333;
+  --color-text-primary:   #FFF;
   --color-text-secondary: #30acc1;
   --color-text-tertiary: #f3bea5;
 
-  --color-link: #333;
-  --color-link-visited: #333;
-  --color-link-hover: #30acc1;
-  --color-link-active: #30acc1;
-  --color-link-focus: #30acc1;
+  --color-link: #A5FFF5;
+  --color-link-visited: #A5FFF5;
+  --color-link-hover: #00A693;
+  --color-link-active: #00A693;
+  --color-link-focus: #00A693;
 
-  --color-bg-primary: #fff;
-  --color-bg-secondary: #21717E;
-  --color-bg-tertiary: #8F2A09;
-  --color-bg-quaternary: #E3AF47;
+  --color-bg-primary: #2A5CC8;
+  --color-bg-secondary: #003B80;
+  --color-bg-tertiary:  #799FF1;
+ // --color-bg-quaternary: #E3AF47;
 
 
   // Couleurs des médias sociaux

@@ -3,21 +3,22 @@
 :root{
   /// Grosseur des textes
 
-  --fz-normal: rem(18);//1.125rem;  //18px
+  --fz-small: 1rem;  //16px
+  --fz-normal: 1.25rem; //20px
 
   /// Grosseur des titres
 
-  --fz-h1: rem(60);//8.75rem; //140px
-  --fz-h2: rem(22);  //40px
-  --fz-h3: rem(20); //36px
-  --fz-h4: rem(18); //68px
+  --fz-h1: 4.5rem;  //72px
+  --fz-h2: 4.5rem;  //72px
+  --fz-h3: 3rem; //48px
+  --fz-h4: 2.25rem; //36px
 
 
   /// Font family
 
-  --ff-normal: 'Prompt', sans-serif;
-  --ff-title-primary: 'Anton', sans-serif;
-  --ff-title-secondary: 'Sansita Swashed', cursive;
+  --ff-normal: 'Rubik', sans-serif;
+  --ff-title-primary: 'Oswald', sans-serif;
+  --ff-title-secondary: 'Open Sans Condensed', sans-serif;
 
   /// Hauteur de ligne
   --lh-extra-thin: 1;
