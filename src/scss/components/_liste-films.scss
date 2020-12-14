@@ -4,19 +4,20 @@
   justify-content: center;
   align-items: center;
 
+  padding: var(--padding-large);
+  background: var(--color-bg-tertiary);
+
   .liste-films-notes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-gap: 10px;
 
-    article {
-      flex-basis: 33%;
-      padding: 20px;
+    .film{
+      padding: var(--padding-large);
+    }
 
-      border: 1px black solid;
+    img{
 
-      margin-bottom: 20px;
     }
   }
 }

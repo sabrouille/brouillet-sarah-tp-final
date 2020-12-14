@@ -1,11 +1,21 @@
-
 .liste-acteurs{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  .swiper-slide{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .liste-acteurs .acteur{
   width: calc(20% - 30px);
+
+  img{
+    max-width: 25%;
+  }
 }
 

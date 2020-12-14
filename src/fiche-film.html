@@ -2,11 +2,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>TIMflix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TIMflix</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Oswald:wght@400;600;700&family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 
 
@@ -15,9 +18,9 @@
 
 <div class="template">
 
-    <article class="acteur">
-        <h3>Nom de l'acteur (à modifier)</h3>
+    <article class="acteur swiper-slide">
         <img src="images/image-temp.jpg" alt="Description de l'image (à modifier)">
+        <h3>Nom de l'acteur (à modifier)</h3>
     </article>
 
 </div>
@@ -29,12 +32,35 @@
 
         <img class="affiche" src="images/image-temp.jpg" alt="Description de l'image (à modifier)">
 
+        <p class="annee">L'année de parution du film</p>
+        <p class="vote">Nombre d'étoiles</p>
+        <p class="lang">Langue originale</p>
+        <p class="duree">Durée</p>
+        <p class="budget">Budget</p>
+        <p class="recette">Revenus du film</p>
         <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
 
+        <h2>Acteurs</h2>
+        <div class="swiper-container liste-acteurs">
+            <div class="swiper-wrapper">
+                <!--<article class="acteur swiper-slide">
+                    <img src="images/image-temp.jpg" alt="Description de l'image (à modifier)">
+                    <h3>Nom de l'acteur (à modifier)</h3>
+                </article>
 
-        <div class="liste-acteurs">
+                <article class="acteur swiper-slide">
+                    <img src="images/image-temp.jpg" alt="Description de l'image (à modifier)">
+                    <h3>Nom de l'acteur (à modifier)</h3>
+                </article>
 
-
+                <article class="acteur swiper-slide">
+                    <img src="images/image-temp.jpg" alt="Description de l'image (à modifier)">
+                    <h3>Nom de l'acteur (à modifier)</h3>
+                </article> -->
+            </div>
+            <!-- Boutons de navigation -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
 
     </main>

@@ -1,9 +1,16 @@
 //FICHIER DE CONFIGURATION POUR LES ÉLÉMENTS TITRE DE LA PAGE
 
+h1, h2, h3, h4{
+  text-align: center;
+}
 
 h1, h3{
   font-family: var(--ff-title-primary);
   line-height: var(--lh-thin);
+}
+
+h2, h3{
+  margin: var(--margin-thin) 0;
 }
 
 h2, h4{
@@ -16,16 +23,19 @@ h1{
   font-size: var(--fz-h1);
   text-transform: uppercase;
   font-weight: var(--fw-bold);
+  margin: var(--margin-large) 0;
 }
 
 h2{
   font-size: var(--fz-h2);
   text-transform: uppercase;
+
 }
 
 h3{
   font-size: var(--fz-h3);
   font-weight: var(--fw-regular);
+
 }
 
 h4{

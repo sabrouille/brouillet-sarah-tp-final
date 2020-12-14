@@ -8,8 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //console.log(params);
 
-        connexion.requeteInfoFilm(params.get("id"));
-    } else {
+        if(params.get("id") === null){
+            connexion.requeteFilmRecent();
+        }
+        else {
+            connexion.requeteInfoFilm(params.get("id"));
+        }
+
+    }
+    else {
         connexion.requeteDernierFilm();
         connexion.requeteFilmsPopulaires();
     }
@@ -92,7 +99,7 @@ class MovieDB {
             unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);
         }
 
-        var mySwiper = new Swiper('.carrousel', {
+        var mySwiper1 = new Swiper('.carrousel', {
             direction: 'horizontal',
             loop: true,
             navigation: {
@@ -149,9 +156,12 @@ class MovieDB {
     }
 
 
+
     requeteInfoFilm(movieId) {
         //Mettre une page web à jour sans perturber les actions de l'utilisateur
         let requeteXhr = new XMLHttpRequest();
+
+        //console.log(movieId);
 
         requeteXhr.addEventListener("loadend", this.retourRequeteInfoFilm.bind(this));
 
@@ -173,22 +183,54 @@ class MovieDB {
 
         data = JSON.parse(target.responseText);
 
-        console.log(data);
+        //console.log(data);
 
         this.afficheInfoFilm(data);
     }
 
     afficheInfoFilm(data) {
-        console.log(data.title);
+        //console.log(data.backdrop_path);
 
         document.querySelector("h1").innerHTML = data.title;
         document.querySelector("p.description").innerHTML = data.overview || "Description non disponible";
+        document.querySelector("p.annee").innerHTML = "Année de parution : " + (data.release_date || "Non disponible");
+        document.querySelector("p.vote").innerHTML = "Note moyenne : " + data.vote_average || "Non disponible";
+
+        if(data.original_language === "en"){
+            document.querySelector("p.lang").innerHTML = "Langue originale : Anglais";
+        }
+        else if(data.original_language === "fr"){
+            document.querySelector("p.lang").innerHTML = "Langue originale : Français";
+        }
+        else{
+            document.querySelector("p.lang").innerHTML = "Langue originale : " + (data.original_language || "Non disponible");
+        }
+
+        if(data.runtime === 0){
+            document.querySelector("p.duree").innerHTML = "Durée : Non disponible";
+        }
+        else{
+            document.querySelector("p.duree").innerHTML = "Durée : " + data.runtime + " minutes";
+        }
+
+        if(data.budget === 0){
+            document.querySelector("p.budget").innerHTML = "Budget : Non disponible";
+        }
+        else{
+            document.querySelector("p.budget").innerHTML = "Budget : " + data.budget + "$";
+        }
+
+        if(data.revenue === 0){
+            document.querySelector("p.recette").innerHTML = "Revenus : Non disponible";
+        }
+        else{
+            document.querySelector("p.recette").innerHTML = "Revenus : " + data.revenue + "$";
+        }
 
         let src = this.imgPath + "w185" + data.backdrop_path;
+        //console.log(src);
         document.querySelector("img.affiche").setAttribute("src", src);
         document.querySelector("img.affiche").setAttribute("alt", data.title);
-
-        console.log(src);
 
         this.requeteActeur(data.id);
 
@@ -200,6 +242,51 @@ class MovieDB {
         unArticle.querySelector("a").setAttribute("href", "fiche-film.html?id=" + data[i].id);*/
 
     }
+
+
+    requeteFilmRecent() {
+        //Mettre une page web à jour sans perturber les actions de l'utilisateur
+        let requeteXhr = new XMLHttpRequest();
+
+        requeteXhr.addEventListener("loadend", this.retourRequeteFilmRecent.bind(this));
+
+        // https://api.themoviedb.org/3/movie/upcoming?api_key=195be83ab1367b9fb7eed4908ea17b46&language=fr-CA&page=1
+
+        //Initialiser la requête pour récupérer les films
+        requeteXhr.open("GET", this.baseURL + "/movie/upcoming?api_key=" + this.APIKey + "&language=" + this.lang + "&page=1");
+
+        //Envoyer la requête
+        requeteXhr.send();
+    }
+
+    retourRequeteFilmRecent(e) {
+        let target = e.currentTarget;
+
+        //console.log(target.responseText);
+
+        let data;
+
+        data = JSON.parse(target.responseText).results;
+
+        console.log(data);
+
+        this.afficheFilmRecent(data);
+    }
+
+    afficheFilmRecent(data) {
+        for (let i = 0; i < 9; i++){
+            //console.log(data[i].title);
+            document.querySelector("h1").innerHTML = data[0].title;
+            document.querySelector("p.description").innerHTML = data[0].overview || "Description non disponible";
+
+            let src = this.imgPath + "w185" + data[0].backdrop_path;
+            document.querySelector("img.affiche").setAttribute("src", src);
+            document.querySelector("img.affiche").setAttribute("alt", data[0].title);
+        }
+
+        this.requeteActeur(data.id);
+    }
+
 
 
     requeteActeur(movieId) {
@@ -214,10 +301,47 @@ class MovieDB {
     }
 
     retourRequeteActeur(e) {
-        console.log("Retour acteurs");
+
+        let target = e.currentTarget;
+
+        let data;
+
+        data = JSON.parse(target.responseText).cast;
+        console.log(data);
+
+        this.afficheActeur(data);
     }
 
     afficheActeur(data) {
-        //let unActeur = document.querySelector(".template>article.acteur").cloneNode(true);
+        for (let i = 0; i < data.length; i++){
+            let unActeur = document.querySelector(".template>.acteur").cloneNode(true);
+
+            unActeur.querySelector("h3").innerHTML = data[i].original_name;
+
+            let uneImage = unActeur.querySelector("img");
+
+            let src = this.imgPath + "w185" + data[i].profile_path;
+
+            console.log(src);
+            if(data[i].profile_path != null){
+                uneImage.setAttribute("src", src);
+                uneImage.setAttribute("alt", data[i].original_name);
+            }
+            else{
+                uneImage.setAttribute("src", "../images/SansImage.jpg");
+                uneImage.setAttribute("alt", "image-indisponible");
+            }
+
+            document.querySelector(".swiper-wrapper").appendChild(unActeur);
+        }
+
+        var mySwiper2 = new Swiper('.liste-acteurs', {
+            direction: 'horizontal',
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     }
 }

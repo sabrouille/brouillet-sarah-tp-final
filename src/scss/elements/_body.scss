@@ -7,6 +7,10 @@ body{
   line-height: var(--lh-normal);
 
   background: var(--color-bg-primary);
+
+  p{
+    margin: var(--margin-thin) 0;
+  }
 }
 
 @media screen and(min-width: $vw-medium){

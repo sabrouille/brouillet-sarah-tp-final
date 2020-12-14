@@ -26,8 +26,8 @@
     </div>
 
     <article class="film">
-        <h3>Titre du film (à modifier)</h3>
         <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
+        <h3>Titre du film (à modifier)</h3>
         <p class="annee">Année de parution du film</p>
         <p class="cote">La cote du film</p>
         <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
@@ -41,17 +41,16 @@
 
     <nav class="nav-principale">
         <ul>
-            <li><a href="#">Lien 1</a></li>
-            <li><a href="#">Lien 2</a></li>
-            <li><a href="#">Lien 3</a></li>
+            <li><a href="#populaires">Les plus populaires</a></li>
+            <li><a href="#notes">Les mieux notés</a></li>
+            <li><a href="fiche-film.html" class="recent">Le plus récent</a></li>
         </ul>
     </nav>
 </header>
 
 <div class="wrapper">
 
-
-    <div class="swiper-container carrousel">
+    <div class="swiper-container carrousel" id="populaires">
         <h1>Les plus populaires</h1>
         <div class="swiper-wrapper">
             <!--<div class="populaire swiper-slide">
@@ -67,9 +66,7 @@
         <div class="swiper-pagination"></div>
     </div>
 
-    <hr>
-
-    <section class="liste-films">
+    <section class="liste-films" id="notes">
         <h2>Les mieux notés</h2>
 
         <div class="liste-films-notes">
