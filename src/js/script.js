@@ -20,6 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
         connexion.requeteDernierFilm();
         connexion.requeteFilmsPopulaires();
     }
+
+    document.querySelector(".material-icons").addEventListener("click", fScrollToTop);
+
+    function fScrollToTop(e){
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        })
+    }/**/
 });
 
 
@@ -70,7 +80,7 @@ class MovieDB {
 
         data = JSON.parse(target.responseText).results;
 
-        //console.log(data);
+        console.log(data);
 
         this.afficheDernierFilm(data);
     }
@@ -79,7 +89,7 @@ class MovieDB {
         for (let i = 0; i < this.totalFilms; i++) {
             //console.log(data[i].title);
 
-            let unArticle = document.querySelector(".template>article.film").cloneNode(true);
+            let unArticle = document.querySelector(".template>.film").cloneNode(true);
 
             unArticle.querySelector("h3").innerHTML = data[i].title;
             unArticle.querySelector("p.description").innerHTML = data[i].overview || "Description non disponible";
@@ -244,6 +254,7 @@ class MovieDB {
     }
 
 
+
     requeteFilmRecent() {
         //Mettre une page web à jour sans perturber les actions de l'utilisateur
         let requeteXhr = new XMLHttpRequest();
@@ -274,17 +285,47 @@ class MovieDB {
     }
 
     afficheFilmRecent(data) {
-        for (let i = 0; i < 9; i++){
-            //console.log(data[i].title);
+        for (let i = 0; i < 1; i++){
+            //console.log(data[0]);
             document.querySelector("h1").innerHTML = data[0].title;
+            document.querySelector("p.description").innerHTML = data[0].overview || "Description non disponible";
+            document.querySelector("p.annee").innerHTML = "Année de parution : " + (data[0].release_date || "Non disponible");
+            document.querySelector("p.vote").innerHTML = "Note moyenne : " + data[0].vote_average || "Non disponible";
+
+            if(data[0].original_language === "en"){
+                document.querySelector("p.lang").innerHTML = "Langue originale : Anglais";
+            } else if(data[0].original_language === "fr"){
+                document.querySelector("p.lang").innerHTML = "Langue originale : Français";
+            } else{
+                document.querySelector("p.lang").innerHTML = "Langue originale : " + (data[0].original_language || "Non disponible");
+            }
+
+            if(data[0].runtime === 0 || data[0].runtime === undefined){
+                document.querySelector("p.duree").innerHTML = "Durée : Non disponible";
+            } else{
+                document.querySelector("p.duree").innerHTML = "Durée : " + data[0].runtime + " minutes";
+            }
+
+            if(data[0].budget === 0 || data[0].budget === undefined){
+                document.querySelector("p.budget").innerHTML = "Budget : Non disponible";
+            } else{
+                document.querySelector("p.budget").innerHTML = "Budget : " + data[0].budget + "$";
+            }
+
+            if(data[0].revenue === 0 || data[0].revenue === undefined){
+                document.querySelector("p.recette").innerHTML = "Revenus : Non disponible";
+            } else{
+                document.querySelector("p.recette").innerHTML = "Revenus : " + data[0].revenue + "$";
+            }
+
             document.querySelector("p.description").innerHTML = data[0].overview || "Description non disponible";
 
             let src = this.imgPath + "w185" + data[0].backdrop_path;
             document.querySelector("img.affiche").setAttribute("src", src);
             document.querySelector("img.affiche").setAttribute("alt", data[0].title);
-        }
 
-        this.requeteActeur(data.id);
+            this.requeteActeur(data[0].id);
+        }
     }
 
 
@@ -303,31 +344,29 @@ class MovieDB {
     retourRequeteActeur(e) {
 
         let target = e.currentTarget;
-
-        let data;
-
-        data = JSON.parse(target.responseText).cast;
+        let data = JSON.parse(target.responseText).cast;
         console.log(data);
+        if(data === undefined){
 
+        }else{
+
+        }
         this.afficheActeur(data);
     }
 
     afficheActeur(data) {
         for (let i = 0; i < data.length; i++){
             let unActeur = document.querySelector(".template>.acteur").cloneNode(true);
-
+            //console.log(unActeur);
             unActeur.querySelector("h3").innerHTML = data[i].original_name;
 
             let uneImage = unActeur.querySelector("img");
-
             let src = this.imgPath + "w185" + data[i].profile_path;
 
-            console.log(src);
             if(data[i].profile_path != null){
                 uneImage.setAttribute("src", src);
                 uneImage.setAttribute("alt", data[i].original_name);
-            }
-            else{
+            } else{
                 uneImage.setAttribute("src", "../images/SansImage.jpg");
                 uneImage.setAttribute("alt", "image-indisponible");
             }

@@ -2,9 +2,36 @@ footer{
   padding: var(--padding-large);
   background-color: var(--color-bg-secondary);
 
+  position: relative;
+
   .logo{
     max-width: 15%;
     margin-bottom: var(--margin-large);
+  }
+
+  .material-icons{
+    font-size: 4rem;
+    color: var(--color-white);
+    border: 5px solid var(--color-white);
+    border-radius: 100%;
+
+    position: absolute;
+    right: 20px;
+
+    &:hover{
+      cursor: pointer;
+
+      color: var(--color-bg-secondary);
+      background-color: var(--color-white);
+      transform: translateY(-5px);
+
+      animation-name: top;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-fill-mode: forwards;
+      animation-direction: normal, alternate;
+    }
   }
 
   .medias-sociaux{
@@ -26,6 +53,12 @@ footer{
   p{
     text-align: center;
   }
+}
+
+@keyframes top {
+  0%{transform: translateY(0);}
+  50%{transform: translateY(-5px);}
+  100%{transform: translateY(0);}
 }
 
 @media screen and(min-width: $vw-medium){

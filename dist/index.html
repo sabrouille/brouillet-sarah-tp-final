@@ -6,6 +6,7 @@
     <title>TIMflix</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;1,300&family=Oswald:wght@400;600;700&family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
 
@@ -25,14 +26,18 @@
         <a href="">En savoir plus</a>
     </div>
 
-    <article class="film">
-        <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-        <h3>Titre du film (à modifier)</h3>
-        <p class="annee">Année de parution du film</p>
-        <p class="cote">La cote du film</p>
-        <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-        <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-    </article>
+
+        <article class="film">
+            <a href="fiche-film.html?id=284053" class="block">
+            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
+            <h3>Titre du film (à modifier)</h3>
+            <p class="annee">Année de parution du film</p>
+            <p class="cote">La cote du film</p>
+            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
+            </a>
+        </article>
+
+
 
 </div>
 
@@ -65,26 +70,27 @@
         <!-- Pagination -->
         <div class="swiper-pagination"></div>
     </div>
-
-    <section class="liste-films" id="notes">
-        <h2>Les mieux notés</h2>
-
-        <div class="liste-films-notes">
-
-        </div>
-
-            <!-- <article class="film">
-            <h2>Titre du film (à modifier)</h2>
-            <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
-            <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
-            <a href="fiche-film.html?id=284053">Voir plus d'information</a>
-        </article>-->
-
-    </section>
 </div>
+    <section class="liste-films" id="notes">
+        <div class="wrapper">
+            <h2>Les mieux notés</h2>
+
+            <div class="liste-films-notes">
+                <!--<article class="film">
+                     <h2>Titre du film (à modifier)</h2>
+                     <img src="images/image-temp.jpg" alt="Texte de l'image (à modifier)">
+                     <p class="description">Une description du film. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error illum laborum non.</p>
+                     <a href="fiche-film.html?id=284053">Voir plus d'information</a>
+                    </article>-->
+            </div>
+        </div>
+    </section>
+
 
 <footer>
     <a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" class="logo" alt="Logo TMDB"></a>
+
+    <span class="material-icons">keyboard_arrow_up</span>
 
     <div class="medias-sociaux">
         <a href="#"><img src="images/Facebook.svg" class="facebook" alt="Facebook"></a>

@@ -8,6 +8,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    .swiper-button-next:after, .swiper-button-prev:after{
+      
+    }
   }
 }
 
