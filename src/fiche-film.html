@@ -27,14 +27,32 @@
 </div>
 
 <header>
-    <a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" class="logo" alt="Logo TMDB"></a>
-
     <nav class="nav-principale">
+        <a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" class="logo" alt="Logo TMDB"></a>
         <ul>
+            <li><a href="index.html" class="recent">Accueil</a></li>
             <li><a href="index.html#populaires">Les plus populaires</a></li>
             <li><a href="index.html#notes">Les mieux notés</a></li>
-            <li><a href="fiche-film.html" class="recent">Le plus récent</a></li>
+
         </ul>
+    </nav>
+
+    <nav class="nav-mobile">
+        <ul>
+            <li><a href="https://www.themoviedb.org/"><img src="images/LogoTMDB.svg" class="logo" alt="Logo TMDB"></a></li>
+            <li><button class="hamburger hamburger-animated">
+                <span class="material-icons icon-open">menu</span>
+                <span class="material-icons icon-close">close</span>
+            </button></li>
+        </ul>
+
+        <nav class="nav-mobile-modale">
+            <ul>
+                <li><a href="index.html" class="recent">Accueil</a></li>
+                <li><a href="index.html#populaires">Les plus populaires</a></li>
+                <li><a href="index.html#notes">Les mieux notés</a></li>
+            </ul>
+        </nav>
     </nav>
 </header>
 

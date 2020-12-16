@@ -9,3 +9,12 @@ html{
 *, *:before, *:after{
   box-sizing: inherit;
 }
+
+button {
+  background: none;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}

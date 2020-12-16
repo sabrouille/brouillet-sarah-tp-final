@@ -1,17 +1,21 @@
 header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: var(--padding-large);
+  position: relative;
 
   background: var(--color-bg-secondary);
 
   .logo{
     max-width: 40%;
   }
+}
 
-  nav ul{
+.nav-principale{
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--padding-large);
+
+  ul{
     padding: 0;
     display: grid;
     grid-template-columns: auto auto auto;
@@ -24,10 +28,119 @@ header{
   }
 }
 
+.nav-mobile{
+  position: relative;
+  width: 100%;
+
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--color-bg-secondary);
+
+    padding: var(--padding-large);
+    margin: 0;
+
+    list-style-type: none;
+
+    position: relative;
+    z-index: 3;
+  }
+
+  &.open{
+    .nav-mobile-modale{
+      transform: translateY(0);
+    }
+  }
+}
+
+.nav-mobile-modale{
+  background-color: var(--color-bg-secondary);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+
+  transform: translateY(-100%);
+  transition: .3s transform ease-out;
+  z-index: 2;
+
+    ul{
+      display: grid;
+      grid-template-columns: auto;
+      justify-content: stretch;
+      padding: 0;
+
+      text-align: center;
+      text-transform: uppercase;
+
+      li{
+        padding: var(--padding-medium) 0;
+        border-bottom: 2px solid var(--color-link);
+        color: var(--color-link);
+
+        &:last-child{
+          border: none;
+        }
+      }
+    }
+  }
+
+  .hamburger{
+    position: relative;
+    cursor: pointer;
+    color: var(--color-text-primary);
+
+    .material-icons{
+      font-size: 3rem;
+    }
+  }
+
+  .hamburger-animated{
+    position: relative;
+
+    .icon-open, .icon-close{
+      transition: .3s transform ease-out;
+    }
+
+    .icon-close{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    &.open{
+      .icon-open, .icon-close{
+        transition: .3s transform ease-in;
+      }
+
+      .icon-close{
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .icon-open{
+        transform: scale(0);
+      }
+    }
+  }
+
+
+
 @media screen and(min-width: $vw-medium){
   header{
     .logo{
       max-width: 75%;
+    }
+
+    .nav-principale{
+      display: flex;
+    }
+
+    .nav-mobile{
+      display: none;
     }
   }
 }

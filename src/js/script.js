@@ -21,6 +21,28 @@ document.addEventListener("DOMContentLoaded", function () {
         connexion.requeteFilmsPopulaires();
     }
 
+
+    var hamburger = document.querySelector(".hamburger");
+    var menuMobile = document.querySelector(".nav-mobile");
+    console.log(hamburger);
+    hamburger.addEventListener("click", openMenu);
+
+    function openMenu(evt){
+        evt.preventDefault();
+
+        var cible = evt.currentTarget;
+
+        if(cible.classList.contains("open")){
+            cible.classList.remove("open");
+            menuMobile.classList.remove("open");
+        }
+        else{
+            cible.classList.add("open");
+            menuMobile.classList.add("open");
+        }
+    }
+
+
     document.querySelector(".material-icons").addEventListener("click", fScrollToTop);
 
     function fScrollToTop(e){
