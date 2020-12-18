@@ -1,21 +1,30 @@
 //FICHIER DE CONFIGURATION POUR LES VARIABLES DE POLICE
 
 :root{
-  /// Grosseur des textes
-
+  // Grosseur des textes
+  --fz-mobile: 0.75rem; //12px
   --fz-small: 1rem;  //16px
   --fz-normal: 1.25rem; //20px
 
-  /// Grosseur des titres
+  // Grosseur des titres mobiles
+  --fz-h1-mobile: 2rem;  //32px
+  --fz-h2-mobile: 2rem;  //32px
+  --fz-h3-mobile: 1.75rem; //28px
+  --fz-h4-mobile: 2.25rem; //36px
 
-  --fz-h1: 2rem;  //32px
+  // Grosseur des titres mobiles
+  --fz-h1-medium: 3rem;  //48px
+  --fz-h2-medium: 3rem;  //48px
+  --fz-h3-medium: 2.25rem; //36px
+  --fz-h4-medium: 2.25rem; //36px
+
+  // Grosseur des titres desktop
+  --fz-h1: 4.5rem;  //72px
   --fz-h2: 4.5rem;  //72px
   --fz-h3: 3rem; //48px
   --fz-h4: 2.25rem; //36px
 
-
   /// Font family
-
   --ff-normal: 'Rubik', sans-serif;
   --ff-title-primary: 'Oswald', sans-serif;
   --ff-title-secondary: 'Open Sans Condensed', sans-serif;
@@ -44,11 +53,7 @@
 }
 
 
-// Grosseur des titres desktop
-/*--fz-h1: 4.5rem;  //72px
---fz-h2: 4.5rem;  //72px
---fz-h3: 3rem; //48px
---fz-h4: 2.25rem; //36px*/
+
 
 
 

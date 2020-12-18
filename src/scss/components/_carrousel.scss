@@ -1,10 +1,6 @@
 .carrousel{
-  max-width: 50%;
-  padding: var(--padding-large);
-
-  h1{
-
-  }
+  max-width: 60%;
+  padding: 0 0 var(--padding-very-large);
 
   .swiper-slide{
     display: flex;
@@ -13,9 +9,41 @@
     justify-content: center;
 
     img{
-      width: 50%;
+      width: 75%;
     }
+  }
+
+  .swiper-button-next{
+    right: 0;
+  }
+
+  .swiper-button-prev{
+    left: 0;
+  }
+
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size: 1.25rem;
+    color: var(--color-link);
+  }
+
+  .swiper-pagination-bullet{
+    width: 5px;
+    height: 5px;
+  }
+
+  .swiper-pagination-bullet-active{
+    background-color: var(--color-link-active);
   }
 }
 
 
+@media screen and(min-width: $vw-medium){
+  .carrousel{
+    padding: var(--padding-large) 0 var(--padding-huge);
+
+    .swiper-pagination-bullet{
+      width: 8px;
+      height: 8px;
+    }
+  }
+}

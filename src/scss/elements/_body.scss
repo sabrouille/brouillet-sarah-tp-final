@@ -2,7 +2,7 @@
 
 body{
   font-family: var(--ff-normal);
-  font-size: var(--fz-small);
+  font-size: var(--fz-mobile);
   color: var(--color-text-primary);
   line-height: var(--lh-normal);
 
@@ -10,6 +10,13 @@ body{
 
   p{
     margin: var(--margin-thin) 0;
+  }
+}
+
+
+@media screen and(min-width: $vw-small){
+  body{
+    font-size: var(--fz-small);
   }
 }
 

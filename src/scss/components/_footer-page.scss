@@ -1,5 +1,5 @@
 footer{
-  padding: var(--padding-large);
+  padding: var(--padding-thin);
   background-color: var(--color-bg-secondary);
 
   position: relative;
@@ -10,9 +10,9 @@ footer{
   }
 
   .material-icons{
-    font-size: 4rem;
+    font-size: 2rem;
     color: var(--color-white);
-    border: 5px solid var(--color-white);
+    border: 3px solid var(--color-white);
     border-radius: 100%;
 
     position: absolute;
@@ -63,6 +63,13 @@ footer{
 
 @media screen and(min-width: $vw-medium){
   footer{
+    padding: var(--padding-large);
+
+    .material-icons{
+      font-size: 4rem;
+      border-width: 5px;
+    }
+
     .medias-sociaux{
       grid-gap: 30px;
 
