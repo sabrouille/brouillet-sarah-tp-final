@@ -1,25 +1,130 @@
-.liste-acteurs{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.fiche-film{
+  padding: 0 var(--padding-medium);
+  margin: var(--margin-thin) 0;
 
-  .swiper-slide{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .info-grid{
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 10px;
 
-    .swiper-button-next:after, .swiper-button-prev:after{
-      
+    margin: var(--margin-thin) 0;
+    text-align: center;
+
+    p{
+      margin: 0;
+    }
+
+    .description{
+      margin-top: var(--margin-thin);
+      text-align: left;
+    }
+  }
+
+  .liste-acteurs{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     margin: 0 var(--margin-huge);
+
+     .swiper-slide{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+
+     }
+
+     .swiper-button-next{
+       right: 20px;
+     }
+
+     .swiper-button-prev{
+       left: 20px;
+     }
+
+     .swiper-button-prev:after, .swiper-button-next:after{
+       font-size: 2rem;
+       color: var(--color-link);
+     }
+
+     .acteur{
+       width: calc(20% - 30px);
+
+       img{
+         max-width: 25%;
+       }
+     }
+   }
+}
+
+
+
+@media screen and(min-width: $vw-small){
+  .fiche-film{
+    .info-grid{
+      grid-template-columns: auto auto;
+
+      .description{
+        grid-column: span 2;
+      }
+    }
+
+    .liste-acteurs{
+       .swiper-button-next{
+         right: 75px;
+       }
+
+       .swiper-button-prev{
+         left: 75px;
+       }
+     }
+  }
+}
+
+@media screen and(min-width: $vw-medium){
+  .fiche-film{
+    padding: 0 var(--padding-very-large);
+
+    .liste-acteurs{
+      .swiper-button-next{
+        right: 100px;
+      }
+
+      .swiper-button-prev{
+        left: 100px;
+      }
+
+      .swiper-button-prev:after, .swiper-button-next:after{
+        font-size: 3rem;
+      }
     }
   }
 }
 
-.liste-acteurs .acteur{
-  width: calc(20% - 30px);
+@media screen and(min-width: $vw-large){
+  .fiche-film{
+    .liste-acteurs{
+      .swiper-button-next{
+        right: 125px;
+      }
 
-  img{
-    max-width: 25%;
+      .swiper-button-prev{
+        left: 125px;
+      }
+    }
   }
 }
 
+@media screen and(min-width: $vw-huge){
+  .fiche-film{
+    .liste-acteurs{
+      .swiper-button-next{
+        right: 175px;
+      }
+
+      .swiper-button-prev{
+        left: 175px;
+      }
+    }
+  }
+}

@@ -36,9 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //BOUTON RETOUR EN HAUT DE LA PAGE
-    document.querySelector(".material-icons").addEventListener("click", fScrollToTop);
+    document.querySelector(".btn-retour").addEventListener("click", fScrollToTop);
 
     function fScrollToTop(e){
+        console.log("test");
         window.scroll({
             top: 0,
             left: 0,
@@ -111,7 +112,7 @@ class MovieDB {
             unArticle.querySelector("p.cote").innerHTML = data[i].vote_average + "/10";
             unArticle.querySelector("p.annee").innerHTML = data[i].release_date;
 
-            let src = this.imgPath + "w185" + data[i].poster_path;
+            let src = this.imgPath + "w342" + data[i].poster_path;
 
             //console.log(src);
 
@@ -166,7 +167,7 @@ class MovieDB {
             unArticle.querySelector("h3").innerHTML = data[i].title;
             unArticle.querySelector("p.cote").innerHTML = data[i].vote_average + "/10";
 
-            let src = this.imgPath + "w185" + data[i].poster_path;
+            let src = this.imgPath + "w500" + data[i].poster_path;
 
             //console.log(src);
 
@@ -252,7 +253,7 @@ class MovieDB {
             document.querySelector("p.recette").innerHTML = "Revenus : " + data.revenue + "$";
         }
 
-        let src = this.imgPath + "w185" + data.backdrop_path;
+        let src = this.imgPath + "w1280" + data.backdrop_path;
         //console.log(src);
         document.querySelector("img.affiche").setAttribute("src", src);
         document.querySelector("img.affiche").setAttribute("alt", data.title);
@@ -301,7 +302,7 @@ class MovieDB {
             unActeur.querySelector("h3").innerHTML = data[i].original_name;
 
             let uneImage = unActeur.querySelector("img");
-            let src = this.imgPath + "w185" + data[i].profile_path;
+            let src = this.imgPath + "w300" + data[i].profile_path;
 
             if(data[i].profile_path != null){
                 uneImage.setAttribute("src", src);

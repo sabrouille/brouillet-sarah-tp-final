@@ -24,6 +24,34 @@ header{
 
     li{
       list-style-type: none;
+
+      .hover-nav{
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+
+        &:hover, &:focus, &:active{
+          color: var(--color-link);
+
+          &:before{
+            left: 0;
+            right: 0;
+          }
+        }
+
+        &:before{
+          content: "";
+          position: absolute;
+          left: 51%;
+          right: 51%;
+          bottom: -5px;
+          background: var(--color-link);
+          height: 4px;
+          transition-property: left, right;
+          transition-duration: 0.3s;
+          transition-timing-function: ease-out;
+        }
+      }
     }
   }
 }
